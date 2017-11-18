@@ -80,7 +80,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'blog',
-        'USER': 'uka.osim',
+        'USER': 'root',
         'PASSWORD': 'django',
         'HOST': '127.0.0.1',
         'PORT': '5432',
