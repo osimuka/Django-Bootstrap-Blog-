@@ -1,0 +1,103 @@
+{% extends 'Post/base.html' %}
+{% load static %}
+{% block 'navbar' %}
+<nav class="navbar navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <p class="navbar-brand">Travel<span>Blog</span></p>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a class="nav-link" href="{% url 'home' %}">HOME</a></li>
+    </ul>
+    <ul class="nav navbar-right">
+      <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                              role="button" aria-haspopup="true" aria-expanded="false">{{user.username|upper}}<span class="caret"></span></a>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <li><a href="{% url 'new-post' %}">Share New Travel Experience</a></li>
+              <li><a href="{% url 'myblog' slug=user.username %}">My Posts</a></li>
+              <li><a href="{% url 'logout' %}">Logout</a></li>
+          </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
+{% endblock %}
+{% block 'body' %}
+
+<!-- page content -->
+<div class="container">
+<div class="row">
+<!-- Blog Content Column -->
+  {% if post %}
+  <div class="col-md-8">
+   <!-- Title -->
+  <h3 class=my-4">{{ post.title }}</h3>
+    <!-- Author -->
+    <p class="lead">
+      by
+      <a href="/{{ post.author }}/">{{ post.author }}</a>
+    </p>
+      <hr>
+      <!-- Date/Time -->
+        <p>{{ post.date }}</p>
+      <hr>
+
+      <!-- Preview Image -->
+      <img class="img-fluid rounded" src="{% static 'blog_img/' %}{{post.image}}" height="400" width="600" alt="Card image cap">
+      <hr>
+      <!-- Post Content -->
+      <p class="card-text">{{ post.post|safe }}</p>
+      <hr>
+        Comments <span class="badge badge-default badge-pill" id="comment-count">{{ post.comments|length }}</span>
+      <div class="container" id="comment-section">
+      <h3>User Comment(s)</h3>
+       <!-- Single Comment -->
+      {% if post.comments %}
+        {% for comments in post.comments %}
+        <div class="row">
+        <div class="media mb-4">
+            <img class="d-flex mr-3 rounded-circle" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png" height="50" width="50" alt="">
+            <div class="media-body">
+              <h5 class="mt-0">{{comments.user}}<span class="text-muted"> commented <strong>{{comments.date}}</strong></span></h5>
+              {{comments.comment}}
+            </div>
+        </div> <!-- media mb-4 -->
+        </div>  <!-- row -->
+        <hr>
+        {% endfor %}
+      {% endif %}
+      </div><!--/container -->
+      <hr>
+        <div id="error"></div>
+        <!-- Comments Form -->
+        <div class="card my-4">
+        <div class="card-body">
+        <form id="comment-box" method="post">
+          <div class="form-group">
+            {% csrf_token %}
+            {{ post.comment_field.comment }}
+          </div>
+          <input type="submit" value="comment" class="btn btn-primary">
+        </form>
+        </div>
+        </div>
+      <br/>
+      </div><!--col-md-8-->
+  {% endif %}
+
+<!-- Side Widget -->
+<div class="card my-4">
+  <h5 class="card-header">Side Widget</h5>
+  <div class="card-body">
+    You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+  </div>
+</div>
+
+</div><!-- /.row -->
+</div><!-- /.container -->
+
+{% endblock %}
+
+{% block javascript %}
+  <script type="text/javascript" src="{% static '/js/ajax_update_post.js' %}"></script>
+{% endblock %}

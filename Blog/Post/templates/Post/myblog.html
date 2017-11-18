@@ -1,0 +1,26 @@
+{% extends 'Post/home.html' %}
+{% block 'navbar' %}
+<nav class="navbar navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <p class="navbar-brand">Travel<span>Blog</span></p>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a class="nav-link" href="{% url 'home' %}">HOME</a></li>
+    </ul>
+    <ul class="nav navbar-right">
+      <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                              role="button" aria-haspopup="true" aria-expanded="false">{{user.username|upper}}<span class="caret"></span></a>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <li><a href="{% url 'new-post' %}">Share New Travel Experience</a></li>
+              <li><a href="{% url 'logout' %}">Logout</a></li>
+          </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
+{% endblock %}
+
+{% block javascript %}
+
+{% endblock %}

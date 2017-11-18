@@ -1,0 +1,38 @@
+.navbar-fixed-top {
+    background-color: #484848;
+    }
+
+.navbar-brand {
+    font-family: 'Exo', sans-serif;
+	font-size: 25px;
+	font-weight: 100;
+    color: #fff;
+}
+
+.navbar-brand span {
+     color: #5379fa !important;
+}
+
+.dropdown-menu {
+    background-color: #484848;
+}
+
+.dropdown-menu li a{
+    color: #fff;
+}
+
+body {
+  padding-top: 54px;
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 56px;
+  }
+}
+
+#navbar-bottom {
+    padding-top: 60px;
+    background-color: #484848;
+    color: #fff;
+}

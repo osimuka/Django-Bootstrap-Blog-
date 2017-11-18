@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% block 'header' %}
+<html lang="en">
+<head>
+    <title>Travel Blog</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% load static %}
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-3.3.7.min.css' %}"/>
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/blog.css' %}"/>
+    <script src="{% static '/js/jquery-3.1.1.min.js' %}"></script>
+    <script src="{% static '/js/bootstrap-3.7.7.min.js' %}"></script>
+</head>
+<body>
+{% endblock %}
+
+{% block 'navbar' %}
+
+{% endblock %}
+
+{% block 'body' %}
+
+{% endblock %}
+
+{% block javascript %}
+
+{% endblock %}
+
+{% block 'footer' %}
+<!-- Footer -->
+<footer id="navbar-bottom">
+    <div class="container">
+        <p>Powered by <a href="https://www.djangoproject.com">Django</a></p>
+    </div>
+      <!-- /.container -->
+</footer>
+{% endblock %}
+</body>
+</html>
+
+
+<!-- https://getbootstrap.com/docs/3.3/components/#navbar -->

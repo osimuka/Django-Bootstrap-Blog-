@@ -1,0 +1,17 @@
+{% if comment_form.errors %}
+<div id="errors">
+    {{comment_form.errors}}
+</div>
+{% else %}
+    <div class="row" id="new-comment">
+        <div class="media mb-4">
+            <img class="d-flex mr-3 rounded-circle" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png" height="50" width="50" alt="">
+            <div class="media-body">
+              <h5 class="mt-0">{{comment_obj.user}}<span class="text-muted"> commented <strong>{{comment_obj.date}}</strong></span></h5>
+              {{comment_obj.comment}}
+            </div>
+        </div> <!-- media mb-4 -->
+        <hr>
+    </div>  <!-- row -->
+    <span class="badge badge-default badge-pill" id="comment-count">{{ total_comments }}</span>
+{% endif %}

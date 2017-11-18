@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign-Up</title>
+    {% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+</head>
+<body>
+  <div class="body"></div>
+    <div class="grad"></div>
+      <div class="header">
+        <div>Sign <span>Up</span></div>
+      </div>
+    <form method="post">
+      <div class="form">
+        {% csrf_token %}
+        {% for field in form %}
+          {{field}}<br/>
+            {% load costume_filters %}
+            {% if field.help_text %}
+        <div class="help_text">{{ field.help_text|strip_tags }}
+        </div>
+            {% endif %}
+            {% for error in field.errors %}
+              <p class="error">{{ error|strip_tags }}</p>
+            {% endfor %}
+        {% endfor %}
+      <input type="submit" value="Sign Up" /><br>
+          <a href="{% url 'login' %}">Log<span>In</span></a>
+      </div>
+  </form>
+  <script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
+</body>
+</html>
